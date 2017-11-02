@@ -31,6 +31,8 @@ class PagesController extends AppController
 
     public function dashboard()
     {
-        
+        if ($this->isAdmin()) {
+        	$this->redirect('/admin/dashboard');
+        }
     }
 }

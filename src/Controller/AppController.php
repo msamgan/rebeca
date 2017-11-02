@@ -88,4 +88,19 @@ class AppController extends Controller
             $this->set('_serialize', true);
         }
     }
+
+    public function beforeFilter(Event $event)
+    {
+        parent::beforeFilter($event);
+        if ($this->Auth->User()) {
+            $inUser['name'] = $this->Auth->User('name');
+            $inUser['role'] = $this->Auth->User('role');
+            $this->set(compact('inUser'));
+        }
+    }
+
+    public function isAdmin()
+    {
+        return $this->Auth->User('role') == 'admin' ? true: false;
+    }
 }
