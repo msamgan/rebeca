@@ -53,6 +53,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/logout', ['controller' => 'users', 'action' => 'logout']);
     $routes->connect('/dashboard', ['controller' => 'pages', 'action' => 'dashboard']);
     $routes->connect('/profile', ['controller' => 'users', 'action' => 'profile']);
+    $routes->connect('/settings', ['controller' => 'users', 'action' => 'settings']);
 
     /**
      * Connect catchall routes for all controllers.
@@ -76,6 +77,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 Router::prefix('admin', function ($routes) {
 
     $routes->connect('/dashboard', ['controller' => 'pages', 'action' => 'dashboard']);
+    $routes->connect('/settings', ['controller' => 'users', 'action' => 'settings']);
     
     // All routes here will be prefixed with `/admin`
     // And have the prefix => admin route element added.

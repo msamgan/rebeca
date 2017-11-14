@@ -110,6 +110,33 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+    public function settings()
+    {
+    }
+
+    public function changePassword()
+    {
+        $user = $this->Users->get($this->Auth->User('id'), [
+            'contain' => []
+        ]);
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            if ($data['password'] != $data['confirm_password']) {
+                $this->Flash->error(__('Confirm password and password do not match.'));
+                return $this->redirect('/settings');
+            } else {
+                unset($data['confirm_password']);
+            }
+            $user = $this->Users->patchEntity($user, $data);
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Your password has been updated.'));
+
+                return $this->redirect('/dashboard');
+            }
+            $this->Flash->error(__('Your password could not be updated. Please, try again.'));
+        }
+    }
+
     //Logout Method
     public function logout()
     {
