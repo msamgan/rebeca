@@ -85,6 +85,9 @@ class UsersController extends AppController
                 $this->Auth->setUser($user);
                 $this->Flash->success(__('Access Granted'));
                 return $this->redirect($this->Auth->redirectUrl());
+            } else {
+                $this->Flash->error(__('Access Denied'));
+                return $this->redirect('/');
             }
         }
         $this->viewBuilder()->layout('auth');
