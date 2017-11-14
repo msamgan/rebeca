@@ -93,6 +93,23 @@ class UsersController extends AppController
         $this->viewBuilder()->layout('auth');
     }
 
+    public function profile()
+    {
+        $user = $this->Users->get($this->Auth->User('id'), [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Your profile has been updated'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('Your profile could not be updated. Please, try again.'));
+        }
+        $this->set(compact('user'));
+    }
+
     //Logout Method
     public function logout()
     {

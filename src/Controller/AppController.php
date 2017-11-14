@@ -93,8 +93,8 @@ class AppController extends Controller
     {
         parent::beforeFilter($event);
         if ($this->Auth->User()) {
-            $inUser['name'] = $this->Auth->User('name');
-            $inUser['role'] = $this->Auth->User('role');
+            $this->loadModel('Users');
+            $inUser = $this->Users->get($this->Auth->User('id'));
             $this->set(compact('inUser'));
         }
     }
