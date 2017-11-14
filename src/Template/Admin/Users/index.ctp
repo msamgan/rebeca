@@ -36,6 +36,7 @@
 									<td><?= $count ?></td>
 									<td>
 										<button class="btn btn-sm btn-danger" onclick="delete_user(<?= $value->id ?>)" ><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+										<a class="btn btn-info btn-sm" href="/admin/users/edit/<?= $value->id ?>"><i class="fa fa-edit" aria-hidden="true"></i></a>
 									</td>
 									<td><?= $value->name ?></td>
 									<td><?= $value->email ?></td>

@@ -11,6 +11,35 @@ class UsersController extends AppController
     	$this->set(compact('users'));
     }
 
+    public function auth()
+    {
+        return $this->redirect('/');
+    }
+
+    /**
+     * Edit method
+     *
+     * @param string|null $id User id.
+     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Network\Exception\NotFoundException When record not found.
+     */
+    public function edit($id = null)
+    {
+        $user = $this->Users->get($id, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__( '"'.$user->name.'" has been updated.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('"'.$user->name.'" could not be updated. Please, try again.'));
+        }
+        $this->set(compact('user'));
+    }
+
     /**
      * Delete method
      *
