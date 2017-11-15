@@ -31,7 +31,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<?php if (isset($users)) { $count = 1; foreach ($users as $value) { ?>
+								<?php if (isset($users)) { $count = 1; foreach ($users as $value) { if ($value->id == $inUser['id']) { continue; }?>
 								<tr>
 									<td><?= $count ?></td>
 									<td>

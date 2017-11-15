@@ -24,6 +24,7 @@
 			<li><a href="/admin/dashboard" ><i class="fa fa-home"></i> Home </a></li>
 			<li><a><i class="fa fa-users"></i> Users <span class="fa fa-chevron-down"></span></a>
 				<ul class="nav child_menu">
+					<li><a href="/admin/admins" >Admins</a></li>
 					<li><a href="/admin/users" >Users</a></li>
 				</ul>
 			</li>

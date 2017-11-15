@@ -5,9 +5,9 @@ use App\Controller\AppController;
 
 class UsersController extends AppController
 {
-	public function index()
+	public function index($role='user')
     {
-    	$users = $this->Users->find('all', [ 'conditions' => ['Users.role' => 'user' ], 'order' => 'Users.id DESC' ]);
+    	$users = $this->Users->find('all', [ 'conditions' => ['Users.role' => $role ], 'order' => 'Users.id DESC' ]);
     	$this->set(compact('users'));
     }
 

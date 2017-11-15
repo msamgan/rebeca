@@ -77,6 +77,7 @@ Router::scope('/', function (RouteBuilder $routes) {
 Router::prefix('admin', function ($routes) {
 
     $routes->connect('/dashboard', ['controller' => 'pages', 'action' => 'dashboard']);
+    $routes->connect('/admins', ['controller' => 'users', 'action' => 'index', 'admin']);
     $routes->connect('/settings', ['controller' => 'users', 'action' => 'settings']);
     
     // All routes here will be prefixed with `/admin`
