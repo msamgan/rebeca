@@ -7,4 +7,6 @@ Default there are 2 roles
  1. admin
  2. user
 
-visit: https://www.samgan.website for details of how to use this setup.
+visit: https://www.samgan.website/tag/dashboard-site/ for details about this setup.
+
+want to set up manually, <a href="https://www.samgan.website/set-samgan-khan-cp3-dashboard-site-manually/" >here</a> is link to provide you details about how to set up this dashboard site manullay.
